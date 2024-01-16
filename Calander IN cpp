@@ -1,0 +1,58 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int first_year(int year){  
+    int day;         // function to find 1st day of the year
+     day=(((year-1)*365)+((year-1)/4)-((year-1)/100)+((year)/400)+1)%7   ;     // formula
+
+    return day; 
+}
+int main(){
+    int year, day,week;
+    int lastday_month[12]={31,28,31,30,31,30,31,31,30,31,30,31,};    // last day of month
+    string months[12]={"january","february","march","april","may","june","july","august","september","octobor","november","december"};   //month name
+    cout<<" Enter a year: \n";     
+       cin>>year;                                 //year name
+ 
+    if(year%4==0){ //condition of leap-year
+        lastday_month[1]=29;
+  }
+    day=first_year(year);
+
+   for(int i=0;i<12;i++){ // print month of the year
+
+             cout<<"\n\n\t\t"<<months[i]<<" , "<<year;
+            cout<<"\n\n  Sun   Mon   Tue   Wed   Thu   Fri   sat \n"; // print day of the year
+            for(int j=0;j<day ;j++){
+                cout<<"      ";
+
+            }
+
+            week=day;
+            for( int m=1;m<lastday_month[i];m++){
+                if( m<= 10){
+                    cout<<"     ";
+                }    
+                else{
+                     cout<<"     ";
+                }
+              
+              if( week > 6){ 
+                cout<<"\n    "<<m;
+                week=0;
+
+                }   
+                else{
+                    cout<<m;
+                } week++;
+        day=week;        
+         }
+
+   }   
+
+
+
+
+
+  
+}
